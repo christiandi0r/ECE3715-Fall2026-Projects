@@ -1,2 +1,7 @@
-# ECE 3715 Fall 2026 Projects
-Python mini-projects and final project for ECE 3715: Probability, Statistics, and Random Processes — Fall 2026.
+# ECE 3715 Fall 2026 Mini Project #1
+
+Christian Ruelas - 
+
+Ibrahim Elsousi - 
+
+Arun Nambiar - 
