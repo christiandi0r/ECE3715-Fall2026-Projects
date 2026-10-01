@@ -6,12 +6,12 @@ This repository contains Mini-Project 1 for **ECE 3715 — Probability and Stati
 
 The project models a wireless communication link that transmits 1000-bit packets over an independent bit-error channel. The notebook develops the model from basic probability and conditional probability through Binomial, Poisson, and geometric random variables, then combines the results to study retransmissions and link goodput.
 
-## Team Members
+## Team Members and Contributions
 
-- **Christian Ruelas** — Steps 3, 6, and 7
-- **[Teammate Name]** — [Assigned step(s)]
-- **[Teammate Name]** — [Assigned step(s)]
-- **[Teammate Name, if applicable]** — [Assigned step(s)]
+- **Ibrahim** — Steps 1 & 4: Sample Space / Binomial; implemented `bsc()` and `packet_errors()`
+- **Arun** — Steps 2 & 5: Bayes / Poisson; implemented `tv_distance()`
+- **Christian Ruelas** — Steps 3, 6 & 7: Independence / Geometric / Convergence; implemented `attempts_until_clean()`
+- **Everyone** — Step 8, final notebook integration, README, testing, and cleanup
 
 ## Repository Contents
 
@@ -70,24 +70,20 @@ mp1/
 
 For a 1000-bit packet:
 
-- The link reaches **2 expected transmissions per delivered packet** at approximately  
-  `p = 6.9 × 10^-4`.
-- Goodput falls to **90%** at approximately  
-  `p = 1.05 × 10^-4`.
+- The link reaches **2 expected transmissions per delivered packet** at approximately `p = 6.9 × 10^-4`.
+- Goodput falls to **90%** at approximately `p = 1.05 × 10^-4`.
 - Shorter packets tolerate higher bit-error probabilities, while longer packets require a cleaner channel.
 
 ## Reproducibility
 
-The notebook uses NumPy's `Generator` interface and seeds the simulation once using the team number. Each project step receives its own independently spawned random-number generator so that rerunning one section does not shift the random stream used by later sections.
-
-Before submission, set:
+A single fixed random seed is chosen once near the top of the notebook using NumPy's `Generator` interface:
 
 ```python
-TEAM_NUMBER = YOUR_TEAM_NUMBER
-SEED = TEAM_NUMBER
+SEED = <chosen random integer>
+rng = np.random.default_rng(SEED)
 ```
 
-in `mp1.ipynb`.
+Each project step then receives its own independently spawned random-number generator so that rerunning one section does not shift the random stream used by later sections.
 
 ## Runtime
 
@@ -107,13 +103,14 @@ The project uses:
 - Matplotlib
 - Jupyter Notebook
 
-## Submission
+## Submission Checklist
 
 Before submitting:
 
-1. Replace the team-number placeholder in `mp1.ipynb`.
-2. Replace the teammate placeholders in this README.
-3. Ensure the final notebook filename is `mp1.ipynb`.
-4. Keep `mp1lib.py` in the same `mp1/` directory.
-5. Restart the kernel and run all cells from top to bottom.
-6. Confirm that all cells run without errors and all figures/outputs are saved.
+1. Choose one random integer for `SEED` and keep it fixed in the final notebook.
+2. Ensure the final notebook filename is `mp1.ipynb`.
+3. Keep `mp1lib.py` in the same `mp1/` directory.
+4. Restart the kernel and run all cells from top to bottom.
+5. Confirm all cells run without errors.
+6. Confirm all figures, tables, and printed outputs are saved in the notebook.
+7. Confirm the complete runtime remains under five minutes.
