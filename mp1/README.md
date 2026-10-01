@@ -8,8 +8,8 @@ The project models a wireless communication link that transmits 1000-bit packets
 
 ## Team Members and Contributions
 
-- **Ibrahim** — Steps 1 & 4: Sample Space / Binomial; implemented `bsc()` and `packet_errors()`
-- **Arun** — Steps 2 & 5: Bayes / Poisson; implemented `tv_distance()`
+- **Ibrahim Elsousi** — Steps 1 & 4: Sample Space / Binomial; implemented `bsc()` and `packet_errors()`
+- **Arun Nambiar** — Steps 2 & 5: Bayes / Poisson; implemented `tv_distance()`
 - **Christian Ruelas** — Steps 3, 6 & 7: Independence / Geometric / Convergence; implemented `attempts_until_clean()`
 - **Everyone** — Step 8, final notebook integration, README, testing, and cleanup
 
@@ -79,19 +79,19 @@ For a 1000-bit packet:
 A single fixed random seed is chosen once near the top of the notebook using NumPy's `Generator` interface:
 
 ```python
-SEED = <chosen random integer>
+SEED = 483271
 rng = np.random.default_rng(SEED)
 ```
 
-Each project step then receives its own independently spawned random-number generator so that rerunning one section does not shift the random stream used by later sections.
+Each project step receives its own independently spawned random-number generator so that rerunning one section does not shift the random stream used by later sections.
 
 ## Runtime
 
-The complete notebook runs from a clean kernel in approximately:
+The final notebook was run from a clean kernel in approximately:
 
-**12 seconds**
+**13.35 seconds**
 
-which is below the required five-minute runtime limit.
+which is well below the required five-minute runtime limit.
 
 ## Requirements
 
@@ -107,10 +107,9 @@ The project uses:
 
 Before submitting:
 
-1. Choose one random integer for `SEED` and keep it fixed in the final notebook.
-2. Ensure the final notebook filename is `mp1.ipynb`.
-3. Keep `mp1lib.py` in the same `mp1/` directory.
-4. Restart the kernel and run all cells from top to bottom.
-5. Confirm all cells run without errors.
-6. Confirm all figures, tables, and printed outputs are saved in the notebook.
-7. Confirm the complete runtime remains under five minutes.
+1. Ensure the final notebook filename is `mp1.ipynb`.
+2. Keep `mp1lib.py` in the same `mp1/` directory.
+3. Restart the kernel and run all cells from top to bottom.
+4. Confirm all cells run without errors.
+5. Confirm all figures, tables, and printed outputs are saved in the notebook.
+6. Confirm the complete runtime remains under five minutes.
