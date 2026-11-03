@@ -11,7 +11,7 @@ The project studies continuous random variables through densities, cumulative di
 - **Christian Ruelas** — Steps 1 & 2: From CDF to Density / Inverse-Transform Sampling; implemented `inv_cdf_exponential()`, `inv_cdf_rayleigh()`, `sample_by_inversion()`, and `ks_statistic()`
 - **Arun Nambiar** — Steps 3 & 5: A Function of a Random Variable / The Central Limit Theorem; derives and simulates transformed distributions and measures convergence of standardized sums to the Gaussian.
 - **Ibrahim Elsousi** — Steps 6, 7 & 8: Gaussian Threshold Detection / Envelope Detection and Noise Mismatch / Choosing the Operating Point; implements `q_function()` and analyzes detection thresholds, ROC curves, noise uncertainty, and operating-point tradeoffs.
-- **Everyone** — Final notebook integration, README, testing, and cleanup
+- **Everyone** — Planned extra-credit work: Bonus A (Characteristic Functions) and Bonus B (A Distribution with No Mean); final notebook integration, README, testing, and cleanup
 
 ## Repository Contents
 
