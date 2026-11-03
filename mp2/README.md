@@ -4,11 +4,11 @@
 
 This repository contains Mini-Project 2 for **ECE 3715 — Probability and Statistics**.
 
-The project studies continuous random variables through densities, cumulative distribution functions, inverse-transform sampling, moments, and the central limit theorem, then applies these ideas to signal detection in noise. The notebook currently covers Steps 1 and 2.
+The project studies continuous random variables through densities, cumulative distribution functions, inverse-transform sampling, moments, and the central limit theorem, then applies these ideas to signal detection in noise. The notebook currently covers Steps 1–4.
 
 ## Team Members and Contributions
 
-- **Christian Ruelas** — Steps 1 & 2: From CDF to Density / Inverse-Transform Sampling; implemented `inv_cdf_exponential()`, `inv_cdf_rayleigh()`, `sample_by_inversion()`, and `ks_statistic()`
+- **Christian Ruelas** — Steps 1, 2 & 4: From CDF to Density / Inverse-Transform Sampling / Expectation and Moments; implemented `inv_cdf_exponential()`, `inv_cdf_rayleigh()`, `sample_by_inversion()`, and `ks_statistic()`
 - **Arun Nambiar** — Steps 3 & 5: A Function of a Random Variable / The Central Limit Theorem; derives and simulates transformed distributions and measures convergence of standardized sums to the Gaussian.
 - **Ibrahim Elsousi** — Steps 6, 7 & 8: Gaussian Threshold Detection / Envelope Detection and Noise Mismatch / Choosing the Operating Point; implements `q_function()` and analyzes detection thresholds, ROC curves, noise uncertainty, and operating-point tradeoffs.
 - **Everyone** — Planned extra-credit work: Bonus A (Characteristic Functions) and Bonus B (A Distribution with No Mean); final notebook integration, README, testing, and cleanup
@@ -25,7 +25,7 @@ mp2/
 └── ECE3715_MP2.pdf
 ```
 
-- **`mp2.ipynb`** — Main Jupyter notebook. Currently runs Step 1 through Step 2 with saved figures, tables, and interpretations.
+- **`mp2.ipynb`** — Main Jupyter notebook. Currently runs Steps 1–4 with saved figures, tables, and interpretations.
 - **`mp2lib.py`** — Helper functions implemented so far: `inv_cdf_exponential(u, lam)`, `inv_cdf_rayleigh(u, sigma)`, `sample_by_inversion(inv_cdf, n, rng, **kw)`, and `ks_statistic(samples, cdf)`.
 - **`README.md`** — Team contributions, repository description, and runtime information.
 - **`requirements.txt`** — Python dependencies.
@@ -44,15 +44,27 @@ mp2/
    - Generates 100,000 samples of each using uniform random samples and the inverse functions.
    - Verifies both generators against analytic CDFs and independent library samples, including numerical endpoint handling.
 
+3. **A Function of a Random Variable**
+   - Derives the CDF and density of a squared standard Gaussian.
+   - Checks the density numerically and shows its behavior near zero on linear and log-log axes.
+
+4. **Expectation and Moments**
+   - Compares the first four Rayleigh raw moments with theory in units of standard error.
+   - Derives the Pareto mean and shows why the variance is infinite.
+   - Plots running means and variances at four sample sizes for both distributions.
+
 ## Key Results
 
-At 100,000 samples per distribution:
+For Steps 1 and 2, using 100,000 samples per distribution:
 
 - All four Step 1 KS statistics fall below the 95 percent critical value of **0.0043007**.
 - Exponential inversion gives a KS statistic of **0.0038259**; Rayleigh inversion gives **0.0020791**, both below the same critical value.
 - Inversion and library samples give two-sample KS statistics of **0.0042500** and **0.0041700**, below the two-sample critical value of **0.0060821**.
 - The exponential sample mean and median are **1.000320** and **0.692804**, compared with theoretical values of **1** and **0.693147**.
 - The Rayleigh sample mean, median, and variance are **1.252540**, **1.175111**, and **0.428195**, compared with theoretical values of **1.253314**, **1.177410**, and **0.429204**.
+
+- The squared Gaussian density integrates to **1** and has a log-log slope of **−0.5** near zero.
+- All four Rayleigh raw moments are within **0.70 standard errors** of theory. At one million draws the Pareto sample mean is **3.0405**, close to its theoretical mean of **3**, while the sample variance is **3,225.94**.
 
 ## Reproducibility
 
@@ -67,9 +79,9 @@ Each project step receives its own independently spawned random-number generator
 
 ## Runtime
 
-The current notebook, covering Steps 1 and 2, was run from a clean kernel in approximately:
+The code cells for Steps 1–4 ran in order in a fresh Python process in approximately:
 
-**27.66 seconds**
+**33.15 seconds**
 
 which is below the required five-minute runtime limit. The complete project runtime will be updated as the remaining steps are added.
 
