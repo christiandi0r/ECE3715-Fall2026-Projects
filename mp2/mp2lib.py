@@ -1,7 +1,7 @@
 """Continuous random-variable helpers for ECE 3715 Mini-Project 2.
 
 Randomness is supplied by the notebook through a NumPy Generator.
-Steps 1 and 2 are implemented; q_function belongs to the later Step 6 work.
+Steps 1 and 2 helpers are preserved; q_function implements the Step 6 tail.
 """
 import numpy as np
 
@@ -60,3 +60,17 @@ def ks_statistic(samples, cdf) -> float:
     d_plus = np.max(i / x.size - f)
     d_minus = np.max(f - (i - 1) / x.size)
     return float(max(d_plus, d_minus))
+
+
+def q_function(x) -> np.ndarray:
+    """Gaussian upper-tail Q(x) = erfc(x / sqrt(2)) / 2.
+
+    Accept scalars or arrays and return an ndarray of the same shape.
+    erfc avoids the cancellation in 1 - Phi(x) for a small upper tail.
+    Infinities have their limiting values; NaNs propagate.
+    No numerical quadrature or normal survival function is used here.
+    """
+    from scipy.special import erfc
+
+    x = np.asarray(x, dtype=float)
+    return np.asarray(0.5 * erfc(x / np.sqrt(2.0)))
