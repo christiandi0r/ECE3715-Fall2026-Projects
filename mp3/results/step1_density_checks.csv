@@ -1,0 +1,5 @@
+check,theory,numerical,difference
+joint mass,1,1.0,0.0
+conditional mass,1,0.9999999999999999,-1.1102230246251565e-16
+X marginal maximum error,0,8.881784197001252e-16,8.881784197001252e-16
+Y marginal maximum error,0,4.440892098500626e-16,4.440892098500626e-16

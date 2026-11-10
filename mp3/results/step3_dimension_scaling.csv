@@ -1,0 +1,2 @@
+reference_dimension,target_dimension,reference_samples,reference_mean_relative_error,reference_mean_se,reference_relative_rms,isotropic_target_samples
+4,100,10000,0.017071347322341137,0.0005913155636771525,0.01891905203479008,282179
