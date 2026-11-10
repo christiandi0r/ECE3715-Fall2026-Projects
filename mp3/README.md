@@ -46,9 +46,8 @@ Install the dependencies with `python -m pip install -r requirements.txt`, open 
 
 ## Runtime
 
-Steps 1–3 ran from a fresh Jupyter kernel in **10.23 seconds**. The notebook saves timing and environment versions in `results/runtime.json`.
+Steps 1–3 ran from a fresh Jupyter kernel in **4.72 seconds**. The notebook saves timing and environment versions in `results/runtime.json`.
 
 ## Team integration
 
 Use the existing `rng4` through `rng8` for Steps 4–8 and add the remaining required functions to `mp3lib.py`. Step 6 can reuse `SIGMA_4D` from Step 3. Insert the later steps before the runtime cell. After merging, rerun from a clean kernel, verify the full runtime is below five minutes, and update the README with contributions and runtime.
-
