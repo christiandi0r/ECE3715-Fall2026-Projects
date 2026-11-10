@@ -16,6 +16,9 @@ This notebook contains Steps 1–3 of the team project. It studies joint and con
 | `mp3.ipynb` | Derivations, experiments, results, and figure interpretations for Steps 1–3 |
 | `mp3lib.py` | The sample mean and covariance estimator and covariance validation |
 | `README.md` | Team contributions, setup, and reproducibility notes |
+| `requirements.txt` | Python dependencies for running the notebook |
+| `figures/` | Figures 1–3 exported as PNGs |
+| `results/` | Ten CSVs with numerical checks for Steps 1–3 and `runtime.json` with timing and environment details |
 
 ## Project steps
 
@@ -42,7 +45,7 @@ rng1, rng2, rng3, rng4, rng5, rng6, rng7, rng8 = rng.spawn(8)
 Install the dependencies in your Python environment.
 
 ```sh
-python -m pip install "numpy>=1.25" "scipy>=1.11" "matplotlib>=3.8" jupyter ipykernel
+python -m pip install -r requirements.txt
 ```
 
 Open `mp3.ipynb` from the folder containing `mp3lib.py`, then restart the kernel and run all cells. The notebook contains the saved outputs and generates PNGs in `figures/` and numerical CSVs in `results/` locally. Rerunning a sampling cell by itself advances its random stream.
