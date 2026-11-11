@@ -7,7 +7,8 @@ This notebook contains Steps 1–3 of the team project. It studies joint and con
 ## Team contributions
 
 - **Christian Ruelas** — Steps 1–3, including Figures 1–3, the Monte Carlo comparisons, `sample_mean_cov`, and `is_valid_covariance`.
-- **Steps 4–8** — Add the partner contributions after integration.
+- **Arun Nambiar** — Assigned Steps 4, 7, and 8 (linear transformations, conditional Gaussians, and sensor fusion).
+- **Ibrahim Elsousi** — Assigned Steps 5–6 (multivariate Gaussian densities and whitening) and the bonus work.
 
 ## Repository contents
 
@@ -56,4 +57,6 @@ Steps 1–3 ran from a fresh Jupyter kernel in **4.72 seconds**. The notebook sa
 
 ## Team integration
 
-Use the existing `rng4` through `rng8` for Steps 4–8 and add the remaining required functions to `mp3lib.py`. Step 6 can reuse `SIGMA_4D` from Step 3. Insert the later steps before the runtime cell. After merging, rerun from a clean kernel, verify the full runtime is below five minutes, and update the README with contributions and runtime.
+Arun can use `rng4`, `rng7`, and `rng8` and add `lmmse_weights` to `mp3lib.py`. Ibrahim can use `rng5` and `rng6` and add `gaussian_pdf` and `whitening_matrix`. Step 6 can reuse `SIGMA_4D` from Step 3. Spawn any bonus streams after the eight existing step streams in the setup cell.
+
+Insert Steps 4–8 in order, followed by the bonus work, before the runtime cell. After merging, rerun from a clean kernel, verify the full runtime is below five minutes, and update the README with completed contributions and runtime.
