@@ -7,8 +7,8 @@ This notebook contains Steps 1–3 of the team project. It studies joint and con
 ## Team contributions
 
 - **Christian Ruelas** — Steps 1–3, including Figures 1–3, the Monte Carlo comparisons, `sample_mean_cov`, and `is_valid_covariance`.
-- **Arun Nambiar** — Assigned Steps 4, 7, and 8 (linear transformations, conditional Gaussians, and sensor fusion).
-- **Ibrahim Elsousi** — Assigned Steps 5–6 (multivariate Gaussian densities and whitening) and the bonus work.
+- **Arun Nambiar** — Steps 4, 7, and 8 (linear transformations, conditional Gaussians, and sensor fusion).
+- **Ibrahim Elsousi** — Steps 5–6 (multivariate Gaussian densities and whitening) and the bonus work.
 
 ## Repository contents
 
