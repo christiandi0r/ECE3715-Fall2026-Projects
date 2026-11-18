@@ -2,40 +2,39 @@
 
 ## Random Vectors and the Multivariate Gaussian
 
-This notebook contains Steps 1–3 of the team project. It studies joint and conditional densities, the difference between zero correlation and independence, and the sample size needed to estimate a covariance matrix.
+The notebook contains Steps 1–6. Steps 1–4 were retained from the uploaded notebook; Steps 5–6 have been added with derivations, numerical verification, and Figures 5–7. Steps 7–8 and bonus work are pending.
 
 ## Team contributions
 
-- **Christian Ruelas** — Steps 1–3, including Figures 1–3, the Monte Carlo comparisons, `sample_mean_cov`, and `is_valid_covariance`.
-- **Arun Nambiar** — Steps 4, 7, and 8 (linear transformations, conditional Gaussians, and sensor fusion).
-- **Ibrahim Elsousi** — Steps 5–6 (multivariate Gaussian densities and whitening) and the bonus work.
+- **Christian Ruelas** — Steps 1–3, Figures 1–3, Monte Carlo comparisons, `sample_mean_cov`, and `is_valid_covariance`.
+- **Arun Nambiar** — Step 4 and Figure 4; assigned Steps 7–8 (pending).
+- **Ibrahim Elsousi** — Steps 5–6, Figures 5–7, `gaussian_pdf`, and `whitening_matrix`; assigned bonus work (pending).
 
-## Repository contents
+## Files
 
 | Path | Contents |
 | --- | --- |
-| `mp3.ipynb` | Derivations, experiments, results, and figure interpretations for Steps 1–3 |
-| `mp3lib.py` | The sample mean and covariance estimator and covariance validation |
-| `README.md` | Team contributions, setup, and reproducibility notes |
-| `requirements.txt` | Python dependencies for running the notebook |
-| `figures/` | Figures 1–3 exported as PNGs |
-| `results/` | Ten CSVs with numerical checks for Steps 1–3 and `runtime.json` with timing and environment details |
+| `mp3.ipynb` | Steps 1–6 with derivations and saved execution outputs |
+| `mp3lib.py` | Sample mean/covariance, covariance validation, Gaussian PDF, and whitening |
+| `requirements.txt` | Dependencies for running in Jupyter |
+| `figures/` | Figures 1–7 as PNGs |
+| `results/` | Numerical CSVs and runtime/environment information |
+| `HANDOFF.md` | Integration notes for the remaining steps |
 
-## Project steps
+## Running the notebook
 
-1. **Two variables at once.** Derive the marginals, conditional density, and moments of the unit-square joint density. Check them by quadrature and use one million rejection samples to compare sample statistics with theory.
-2. **Uncorrelated does not mean independent.** Simulate ten million points on the parabola and compare the observed correlation with zero. Compare narrow-bin variances with finite-bin theory and the exact point-conditional limit. Check factorization for a jointly Gaussian pair using joint and product histogram probabilities.
-3. **The covariance matrix and how well you can estimate it.** Validate the given covariance, estimate it at five sample sizes, and fit the convergence rate using the required independent repetitions. Use relative Frobenius accuracy to extrapolate the sample requirement for an isotropic 100-element array.
+Extract the package, open a terminal in the `mp3` folder, and install dependencies:
 
-## Key results
+```sh
+python -m pip install -r requirements.txt
+python -m jupyterlab mp3.ipynb
+```
 
-- **Step 1.** The rejection sampler accepted **50.0135%** of proposals. All seven Monte Carlo statistics were within **1.16 standard errors** of their analytic values.
-- **Step 2.** The parabola gave a sample correlation of **−0.000262** with a standard error of **0.000396**. The Gaussian joint histogram and the product of its marginals differed by **0.00338** in binned total variation.
-- **Step 3.** The covariance determinant was **55**. The replicated log-log slope was **−0.50931** with a regression standard error of **0.00855**. The scaled mean errors ranged from **14.08 to 16.68**.
+Keep `mp3.ipynb` and `mp3lib.py` in the same folder. In Jupyter, choose **Restart Kernel and Run All Cells**. All figures and results are generated automatically. Rerunning a sampling cell alone advances that step's stream; restart and run all for the recorded result.
 
 ## Reproducibility
 
-The seed was drawn once on November 10, 2026 and fixed near the top of the notebook.
+The original seed and stream allocation are unchanged:
 
 ```python
 SEED = 1015518633  # drawn 2026-11-10, do not change
@@ -43,20 +42,23 @@ rng = np.random.default_rng(SEED)
 rng1, rng2, rng3, rng4, rng5, rng6, rng7, rng8 = rng.spawn(8)
 ```
 
-Install the dependencies in your Python environment.
+Step 5 uses `rng5`. Step 6 reuses the Step 5 samples for geometric comparisons and uses `rng6` for its independent four-dimensional check. `rng7` and `rng8` are unused and ready for the remaining steps. Do not reseed below setup.
 
-```sh
-python -m pip install -r requirements.txt
-```
+## Steps 5–6
 
-Open `mp3.ipynb` from the folder containing `mp3lib.py`, then restart the kernel and run all cells. The notebook contains the saved outputs and generates PNGs in `figures/` and numerical CSVs in `results/` locally. Rerunning a sampling cell by itself advances its random stream.
+- **Step 5:** Gaussian density formula, a determinant/linear-solve implementation, checks against SciPy at five points, normalization over an eight-standard-deviation rectangle, 50%/90%/99% contour counts with standard errors, ellipse axis lengths/directions, and a four-panel correlation sweep.
+- **Step 6:** Symmetric eigendecomposition, scaled eigenvector arrows, decorrelation, whitening, entrywise covariance errors and standard errors, a rotated whitening transform, and a four-dimensional verification using one million samples.
 
-## Runtime
+The covariance used for whitening is the known population covariance, not the covariance estimated from the same sample. Thus agreement with identity is a meaningful simulation check. The functions reject non-positive-definite covariances because a full-dimensional PDF and full-dimensional identity whitening require positive eigenvalues.
 
-Steps 1–3 ran from a fresh Jupyter kernel in **8.06 seconds**. The notebook saves timing and environment versions in `results/runtime.json`.
+## Validation and runtime
+
+All code cells executed in order in a fresh Python/IPython process, without errors. Saved notebook runtime for Steps 1–6 was **8.05 seconds**, below the 300-second limit. Standard Jupyter kernel startup was blocked by socket restrictions in the validation environment, so final **Restart Kernel and Run All** validation should also be performed locally before submission.
+
+The helper functions passed independent checks against SciPy in 1, 2, 4, and 7 dimensions, checks of arbitrary leading sample dimensions, and rejection checks for asymmetric, indefinite, and singular covariances. Figures 5–7 were inspected for labels, legends, and equal aspect ratios.
+
+Recorded environment: Python 3.12.14, NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8. Runtime depends on hardware and numerical-library thread settings; validation used one BLAS thread.
 
 ## Team integration
 
-Arun can use `rng4`, `rng7`, and `rng8` and add `lmmse_weights` to `mp3lib.py`. Ibrahim can use `rng5` and `rng6` and add `gaussian_pdf` and `whitening_matrix`. Step 6 can reuse `SIGMA_4D` from Step 3. Spawn any bonus streams after the eight existing step streams in the setup cell.
-
-Insert Steps 4–8 in order, followed by the bonus work, before the runtime cell. After merging, rerun from a clean kernel, verify the full runtime is below five minutes, and update the README with completed contributions and runtime.
+Continue with Steps 7–8 before the final Runtime section. Add `lmmse_weights` to `mp3lib.py`; it is intentionally pending. Update the notebook introduction, this README, and runtime after the final merge. The project is not yet a complete Steps 1–8 submission.
