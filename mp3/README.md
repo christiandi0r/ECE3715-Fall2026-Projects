@@ -53,7 +53,7 @@ Open `mp3.ipynb` from the folder containing `mp3lib.py`, then restart the kernel
 
 ## Runtime
 
-Steps 1–3 ran from a fresh Jupyter kernel in **4.72 seconds**. The notebook saves timing and environment versions in `results/runtime.json`.
+Steps 1–3 ran from a fresh Jupyter kernel in **8.06 seconds**. The notebook saves timing and environment versions in `results/runtime.json`.
 
 ## Team integration
 
