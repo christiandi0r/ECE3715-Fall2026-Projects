@@ -2,13 +2,11 @@
 
 ## Random Vectors and the Multivariate Gaussian
 
-The notebook contains Steps 1–6. Steps 1–4 were retained from the uploaded notebook; Steps 5–6 have been added with derivations, numerical verification, and Figures 5–7. Steps 7–8 and bonus work are pending.
-
 ## Team contributions
 
 - **Christian Ruelas** — Steps 1–3, Figures 1–3, Monte Carlo comparisons, `sample_mean_cov`, and `is_valid_covariance`.
-- **Arun Nambiar** — Step 4 and Figure 4; assigned Steps 7–8 (pending).
-- **Ibrahim Elsousi** — Steps 5–6, Figures 5–7, `gaussian_pdf`, and `whitening_matrix`; assigned bonus work (pending).
+- **Arun Nambiar** — Step 4 and Figure 4; assigned Steps 7–8.
+- **Ibrahim Elsousi** — Steps 5–6, Figures 5–7, `gaussian_pdf`, and `whitening_matrix`; assigned bonus work.
 
 ## Files
 
