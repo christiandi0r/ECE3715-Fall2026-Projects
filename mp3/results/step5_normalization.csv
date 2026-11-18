@@ -1,0 +1,2 @@
+lower,upper,integral,difference,quadrature_error,excluded_mass_bound
+-16.0,16.0,0.9999999999999978,-2.220446049250313e-15,6.124690229129424e-11,2.488384229708696e-15
