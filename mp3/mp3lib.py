@@ -86,3 +86,22 @@ def whitening_matrix(Sigma) -> np.ndarray:
     """
     _, values, vectors = _positive_definite_matrix(Sigma)
     return vectors.T / np.sqrt(values)[:, None]
+
+
+def lmmse_weights(Sigma_xx, Sigma_sx, sigma_s2) -> tuple[np.ndarray, float]:
+    """Return linear MMSE weights w = Sigma_xx^{-1} Sigma_sx and the MMSE.
+
+    The estimate is S_hat = w @ x for a zero-mean scalar S. Sigma_xx is the
+    (d, d) covariance of the measurements, Sigma_sx the length-d covariance
+    between S and each measurement, and sigma_s2 the variance of S. The MMSE
+    is sigma_s2 - Sigma_sx @ w. A linear solve is used instead of an inverse.
+    """
+    matrix, _, _ = _positive_definite_matrix(Sigma_xx)
+    cross = np.asarray(Sigma_sx, dtype=float)
+    if cross.shape != (matrix.shape[0],) or not np.isfinite(cross).all():
+        raise ValueError("Sigma_sx must be a finite vector with shape (d,)")
+    variance = float(sigma_s2)
+    if not np.isfinite(variance) or variance <= 0:
+        raise ValueError("sigma_s2 must be finite and positive")
+    weights = np.linalg.solve(matrix, cross)
+    return weights, float(variance - cross @ weights)
