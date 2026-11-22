@@ -1,2 +1,2 @@
 measured_relative_mean,mean_standard_error,target_samples,approximate_samples_standard_error,assumption
-0.017071347322341144,0.0005913155636771527,346567,24008.624793022653,100D isotropic covariance; RMS target equals measured 4D mean error
+0.017071347322341137,0.0005913155636771525,346567,24008.62479302267,100D isotropic covariance; RMS target equals measured 4D mean error
