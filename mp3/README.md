@@ -28,6 +28,30 @@ The setup cell assigns one random stream to each step and an additional stream t
 
 The notebook writes figures and result tables automatically. Bonus B reads the included CSV; it requires neither an online dataset download nor scikit-learn.
 
+## Running the Notebook
+
+Use Python 3.10 or newer. Keep `mp3lib.py`, `README.md`, and the `data/` folder beside `mp3.ipynb`.
+
+```sh
+python -m pip install -r requirements.txt
+jupyter notebook mp3.ipynb
+```
+
+Restart the kernel and run all cells in order. The notebook creates `figures/` and `results/` and refreshes the README's validation section from the run.
+
+## Project Steps
+
+| Step | Work completed | Figures |
+| --- | --- | --- |
+| 1 | Joint, marginal, and conditional densities, quadrature, and rejection sampling | 1 |
+| 2 | Zero correlation with nonlinear dependence and Gaussian independence checks | 2 |
+| 3 | Covariance validation, replicated estimation error, and sample-size scaling | 3 |
+| 4 | Mean and covariance transformation rules and singular output geometry | 4 |
+| 5 | Custom Gaussian density, numerical normalization, probability contours, and correlation sweep | 5–6 |
+| 6 | Eigendecomposition, decorrelation, and whitening in two and four dimensions | 7 |
+| 7 | Conditional Gaussian derivation and binned mean and variance checks | 8 |
+| 8 | LMMSE sensor fusion, negative weights, baselines, and Monte Carlo verification | 9 |
+
 ## Reproducibility
 
 The fixed seed is `1015518633`, drawn once on November 10, 2026. Setup creates the random streams in this order:
@@ -70,10 +94,22 @@ The population covariance of the real dataset is unknown. Reconstruction and pro
 
 Covariance matrices, eigenvalue spectra, principal-component coefficients, feature scales, and projected scores are saved in `results/bonus_b_*.csv`.
 
+## Handout Clarifications
+
+- Step 2 compares finite-bin variances with their finite-width targets. The exact point-conditional variance of the parabola is zero.
+- Step 7 corrects for the predictor variation within each bin before comparing with the point-conditional variance of three. Constant conditional variance is guaranteed by the Gaussian model and also occurs in some other distributions.
+- Step 8 includes the valid singular noise covariances at `c = ±sqrt(2)`. The measurement covariance remains invertible there and the optimal MSE is zero.
+- The equal-weight baseline in Step 8 has MSE `(3 + 2c) / 4`, so Figure 9 draws it as a curve. The best-single-sensor baseline is the horizontal line at `0.8`.
+
 ## Validation and Runtime
 
-All 18 code cells executed from top to bottom with no execution errors. The complete notebook recorded **12.82 seconds**, below the five-minute project limit. Runtime varies with hardware and software.
+All 18 code cells executed from top to bottom with no execution errors. The complete notebook recorded **28.42 seconds**, below the five-minute project limit. Runtime varies with hardware and software.
 
-The execution environment's Python, NumPy, SciPy, and Matplotlib versions are recorded in `results/runtime.json`.
+Recorded execution environment:
 
-The final notebook cell updates this section and `results/runtime.json` on every full run.
+- Python 3.12.14
+- NumPy 2.5.5
+- SciPy 1.18.1
+- Matplotlib 3.11.2
+
+The final notebook cell updates this section and `results/runtime.json` on every full run. Restart the kernel and run all cells before submitting.
