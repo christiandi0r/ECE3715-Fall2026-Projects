@@ -1,0 +1,11 @@
+number,title,panels,labels_complete,legends_complete,geometry_equal,geometry_panels
+1,"Figure 1. Joint, marginal, and conditional densities",3,True,True,True,1
+2,Figure 2. Zero correlation with deterministic dependence,2,True,True,True,1
+3,Figure 3. Covariance estimation error versus sample size,1,True,True,True,0
+4,Figure 4. Rank-deficient transformation collapses onto a line,1,True,True,True,1
+5,Figure 5. Gaussian samples and probability contours,1,True,True,True,1
+6,Figure 6. Correlation changes ellipse geometry,4,True,True,True,4
+7,Figure 7. Rotation decorrelates; scaling whitens,3,True,True,True,3
+8,Figure 8. Conditional mean and variance of Y given X,2,True,True,True,0
+9,Figure 9. Optimal fusion weights and MMSE versus noise correlation,2,True,True,True,0
+10,Figure 10. Wine PCA before and after standardization,2,True,True,True,2
