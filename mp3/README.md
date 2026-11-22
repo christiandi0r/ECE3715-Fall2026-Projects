@@ -17,14 +17,14 @@ The notebook contains Steps 1–8 and Bonuses A–B, including mathematical deri
 | File or folder | Description |
 | --- | --- |
 | `mp3.ipynb` | Complete notebook with saved outputs |
-| `mp3lib.py` | Numerical helper functions supplied with the team's Steps 1–8 |
+| `mp3lib.py` | Required numerical helper functions |
 | `requirements.txt` | Python dependencies |
 | `data/wine.csv` | Local dataset for Bonus B |
 | `data/SOURCE.md` | Dataset citation and export details |
 | `figures/` | Figures 1–10 exported as PNG files |
 | `results/` | Numerical comparisons, PCA results, and runtime information |
 
-The bonus additions preserve the team's Steps 1–8 cells and leave `mp3lib.py` unchanged. The setup cell adds a separate random stream for Bonus A after the original eight streams.
+The setup cell assigns one random stream to each step and an additional stream to Bonus A. The required `lmmse_weights(Sigma_xx, Sigma_sx)` function returns the weight vector; Step 8 computes the MMSE separately. The notebook includes finite-bin corrections in Step 7 and explains the singular covariance endpoints and varying equal-weight baseline in Step 8.
 
 The notebook writes figures and result tables automatically. Bonus B reads the included CSV; it requires neither an online dataset download nor scikit-learn.
 
@@ -49,7 +49,7 @@ Each simulation uses its assigned generator. Bonus A receives a new stream witho
 - Explains why Cholesky is normally cheaper for positive-definite covariance matrices.
 - Demonstrates the expected Cholesky failure for a singular covariance and verifies a valid eigenvalue construction for that case.
 
-The largest absolute mean or covariance discrepancy across these experiments is 2.615 standard errors. Factor reconstruction errors are below `5e-15`.
+The numerical tables report the largest standardized discrepancy and factor reconstruction error for each experiment.
 
 ## Bonus B — PCA on Real Data
 
@@ -66,17 +66,14 @@ The notebook computes the sample covariance, eigenvalues, principal directions, 
 
 Raw PCA is dominated by the numerical scale of proline. Standardization gives each chemical measurement equal starting variance and produces a more balanced view of the feature relationships. The notebook explains why the standardized analysis is preferable for exploring these measurements with different scales. The two explained-variance percentages refer to different total-variance definitions.
 
+The population covariance of the real dataset is unknown. Reconstruction and projection residuals check the numerical calculations rather than measuring error against an unknown population covariance.
+
 Covariance matrices, eigenvalue spectra, principal-component coefficients, feature scales, and projected scores are saved in `results/bonus_b_*.csv`.
 
 ## Validation and Runtime
 
-All 18 code cells executed in order in a clean Jupyter kernel with no execution errors. The complete notebook recorded **17.39 seconds**, below the five-minute project limit. Runtime varies with the computer and software configuration.
+All 18 code cells executed from top to bottom with no execution errors. The complete notebook recorded **12.82 seconds**, below the five-minute project limit. Runtime varies with hardware and software.
 
-Recorded environment:
+The execution environment's Python, NumPy, SciPy, and Matplotlib versions are recorded in `results/runtime.json`.
 
-- Python 3.12.14
-- NumPy 2.3.5
-- SciPy 1.17.0
-- Matplotlib 3.10.8
-
-The final notebook cell saves the runtime and package versions to `results/runtime.json` on each full run.
+The final notebook cell updates this section and `results/runtime.json` on every full run.
