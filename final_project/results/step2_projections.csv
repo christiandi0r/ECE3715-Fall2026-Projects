@@ -1,0 +1,3 @@
+detector,mean_H0,mean_H1,variance,threshold,delta
+Optimal,0.0,4.0,4.0,2.0,2.0
+Naive,0.0,20.0,112.0,10.0,1.889822365046136

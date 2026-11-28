@@ -1,0 +1,13 @@
+{
+  "completed_steps": [
+    1,
+    2
+  ],
+  "seed": 791607502,
+  "seconds": 14.088368199998513,
+  "python": "3.12.14",
+  "numpy": "2.5.5",
+  "scipy": "1.18.1",
+  "matplotlib": "3.11.2",
+  "monte_carlo_samples_per_class": 1000000
+}

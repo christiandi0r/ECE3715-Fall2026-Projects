@@ -1,0 +1,4 @@
+check,max_abs_difference
+equal covariance vs SciPy logpdf,1.7763568394002505e-15
+unequal covariance vs SciPy logpdf,6.661338147750939e-16
+equal covariance: linear vs general,0.0

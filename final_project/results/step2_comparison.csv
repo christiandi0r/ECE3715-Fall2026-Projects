@@ -1,0 +1,2 @@
+n_per_class,analytic_error_increase,paired_MC_increase,paired_standard_error,MC_minus_theory,difference_in_SE,extra_errors_relative_to_optimal_percent,avoidable_fraction_of_naive_errors_percent
+1000000,0.013696857072021784,0.01362,0.00018231753442190732,-7.685707202178399e-05,-0.4215561178220323,8.633093914393253,7.947020197359415
